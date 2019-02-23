@@ -2,13 +2,20 @@ package main
 
 import (
 	"io"
+	"os"
 	"net/http"
 )
 
 func main() {
+	port, ok := os.LookupEnv("PORT")
+
+	if !ok {
+		port = "8080"
+	}
+
 	http.HandleFunc("/fruit", items)
 	http.HandleFunc("/health", health)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":" + port, nil)
 }
 
 func items(w http.ResponseWriter, r *http.Request) {
