@@ -5,14 +5,14 @@ basic REST API
 ```
 (clone repo)
 docker build --tag restapi .
-docker run -p 8080:8080 -d restapi
+docker run --name restapi -p 8080:8080 -d restapi
 docker stop restapi
 docker rm restapi
 ```
 
 ## Test
 ```
-curl localhost:8080/fruit (returns)
+curl localhost:8080/fruit 
 [{"type":"apple"}, {"type":"orange"}, {"type":"pear"}]
 ```
 
